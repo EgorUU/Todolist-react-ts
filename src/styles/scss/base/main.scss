@@ -1,0 +1,15 @@
+// Variables
+
+@import './vars.scss';
+
+// Base
+
+@import "./reset.scss";
+
+@import "./media.scss";
+
+// Blocks
+
+@import "../blocks/header.scss";
+
+@import "../blocks/tasks.scss";

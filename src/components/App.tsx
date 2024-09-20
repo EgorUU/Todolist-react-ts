@@ -1,33 +1,24 @@
-import React, { ChangeEvent, FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
+import { Route, Routes, Outlet, Router } from 'react-router-dom'
+// Pages
 
-import Lists from './Lists'
-import Form from './Form'
+import Header from './pages/Header'
+
+import Main from './pages/Main'
 
 
+//
 
-interface Ilists {
-    name: string
-    id: number
-    color: string
-}
 
-type FunctionProps = (a: string, b: string) => void | string
-
-type FuncCheck = (id: number) => void 
-const App: FC = () => {
-    const AddList: FunctionProps = (a, b) => {
-        let countId: number = list.length
-        setList([...list, {id: countId, name: a, color: b}])
-    }
-    const Checked: FuncCheck = (id) => {
-        const newList = list.filter(el => el.id !== id)
-        setList(newList)
-    }
-    const [list, setList] = useState<Ilists[]>([])
+const App: FC = () => {    
     return (
         <>
-            <Form addList={AddList}/>
-            <Lists lists={list} check={Checked}/>
+            <Routes>
+                <Route path="/" element={<Header />}>
+                    <Route path="/:category" element={<Main />}></Route>
+                    
+                </Route>
+            </Routes>
         </>
     )
 
